@@ -27,12 +27,10 @@ export default function UserInfoCard({ user }: Props) {
 
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-7 2xl:gap-x-32">
             {[
-              { id:0, label: messages["first_name"], value: user.first_name },
-              { id:1, label: messages["last_name"], value: user.last_name },
+              { id:0, label: messages["name"], value: user.name },
               { id:2, label: messages["email"], value: user.email },
               { id:3, label: messages["phone"], value: user.phone || '-' },
-              { id:4, label: messages["address"], value: user.address || '-' },
-              { id:5, label: messages["role"], value: user.role?.name || "-" }
+              { id:5, label: messages["role"], value: user.role || "-" }
             ].map(({ id, label, value }) => (
               <div key={id}>
                 <p className="mb-2 text-xs text-gray-500 dark:text-gray-400">{label}</p>
@@ -67,6 +65,7 @@ export default function UserInfoCard({ user }: Props) {
         isOpen={isOpen}
         onClose={closeModal}
         handleSave={handleSave}
+        user={user} 
       />
     </div>
   );

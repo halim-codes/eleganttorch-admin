@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { AxiosError } from 'axios';
-import { fetchUsers,updateUser } from '../services/userService';
+import { fetchUsers, addUser } from '../services/userService';
 import { User } from '../types/User';
 
 export const useUsers = () => {
@@ -8,57 +8,57 @@ export const useUsers = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [newUser, setNewUser] = useState<User | null>(null);
+  const [adding, setAdding] = useState(false);
+
   const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
       const data = await fetchUsers();
-      setUsers(data);
+      setUsers(data.data || []);
     } catch (err: unknown) {
-      const error = err as AxiosError;
-      if (error.response) {
-        setError(`Server Error: ${error.response.status} - ${error.response.statusText}`);
-      } else if (error.request) {
-        setError('Network error: No response received from server');
-      } else {
-        setError(error.message || 'An unexpected error occurred');
-      }
+      const axiosError = err as AxiosError;
+      setError(
+        axiosError.response
+          ? `Server Error: ${axiosError.response.status} - ${axiosError.response.statusText}`
+          : axiosError.request
+          ? "Network error: No response received from server"
+          : axiosError.message || "An unexpected error occurred"
+      );
     } finally {
       setLoading(false);
     }
   }, []);
 
+  const add = async (userData: Omit<User, "id">) => {
+    setAdding(true);
+    setError(null);
+    try {
+      const createdUser = await addUser(userData);
+      setNewUser(createdUser);
+      setUsers(prev => [...prev, createdUser]);
+      return createdUser;
+    } catch (err: unknown) {
+      const axiosError = err as AxiosError;
+      setError(axiosError.message || "Failed to add user");
+    } finally {
+      setAdding(false);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
-  return { users, loading, error, refetch: fetchData };
-};
-
-export const useUpdateUser = (token: string | null) => {
-  const [updating, setUpdating] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [updatedUser, setUpdatedUser] = useState<User | null>(null);
-
-  const update = async (updatedData: Partial<User>) => {
-    if (!token) {
-      setError('No token provided');
-      return;
-    }
-
-    setUpdating(true);
-    setError(null);
-    try {
-      const result = await updateUser(token, updatedData);
-      setUpdatedUser(result);
-      return result;
-    } catch (err: any) {
-      const axiosError = err as AxiosError;
-      setError(axiosError.message || 'Update failed');
-    } finally {
-      setUpdating(false);
-    }
+  return {
+    users,
+    loading,
+    error,
+    refetch: fetchData,
+    add,
+    adding,
+    newUser,
   };
-
-  return { update, updating, error, updatedUser };
 };
+
