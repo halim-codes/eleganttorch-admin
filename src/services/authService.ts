@@ -8,8 +8,8 @@ export const authService = {
 
     try {
       const response = await axiosInstance.post<LoginResponse>("/auth/login", credentials);
+      console.log("Login successful:", response);
       const { access_token, user } = response.data;
-      
       localStorage.setItem("token", access_token);
       localStorage.setItem("user", JSON.stringify(user));
       

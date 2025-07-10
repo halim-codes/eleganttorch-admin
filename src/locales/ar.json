@@ -44,11 +44,29 @@
   "_comment_profile": "الملف التعريفي للمستخدم",
   "p_profile": "الملف التعريفي للمستخدم",
   "personal_info": "المعلومات الشخصية",
-  "first_name": "الاسم الأول",
-  "last_name": "اسم العائلة",
+  "name": "الاسم",
   "email": "البريد الإلكتروني",
   "phone": "رقم الهاتف",
-  "address":"العنوان",
-  "role": "الدور"
+  "role": "الدور",
+  
+  "u_add_user":"أضف مستخدم جديد",
+  "user_created_successfully": "تم إنشاء المستخدم بنجاح!",
+
+  "edit_profile_modal_title": "تعديل الملف الشخصي",
+  "edit_profile_modal_description": "قم بتحديث معلومات ملفك الشخصي.",
+  "edit_profile_modal_sub_title": "المعلومات الشخصية ",
+  "edit_profile_modal_save": "حفظ التغييرات",
+  "edit_profile_modal_cancel": "إلغاء",
+  "edit_profile_modal_success": "تم تحديث الملف الشخصي بنجاح.",
+  "edit_profile_modal_error": "حدث خطأ أثناء تحديث الملف الشخصي.",
+  "edit_profile_modal_loading": "جارٍ تحديث الملف الشخصي...",
+  "edit_profile_modal_change_password": "تغيير كلمة المرور",
+  "edit_profile_modal_current_password": "كلمة المرور الحالية",
+  "edit_profile_modal_new_password": "كلمة المرور الجديدة",
+  "edit_profile_modal_confirm_password": "تأكيد كلمة المرور",
+  "edit_profile_modal_password_mismatch": "كلمات المرور غير متطابقة.",
+  "edit_profile_modal_password_success": "تم تغيير كلمة المرور بنجاح.",
+  "edit_profile_modal_password_error": "حدث خطأ أثناء تغيير كلمة المرور.",
+  "edit_profile_modal_password_loading": "جارٍ تغيير كلمة المرور..."
 
 }

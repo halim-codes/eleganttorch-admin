@@ -42,15 +42,34 @@
   "u_phone": "Phone Number",
   "u_address": "Address",
   "u_status": "Status",
-  "u_add_user": "Add New User",
   "u_add": "Add",
   "u_cancel": "Cancel",
 
   "personal_info": "Personal Information",
-  "first_name": "First Name",
-  "last_name": "Last Name",
+  "name": "Name",
   "email": "Email",
   "phone": "Phone Number",
   "address": "Address",
-  "role": "Role"
+  "role": "Role",
+
+  "u_add_user": "Add New User",
+  "user_created_successfully": "User created successfully!",
+
+
+  "edit_profile_modal_title": "Edit Profile",
+  "edit_profile_modal_description": "Update your profile information.",
+  "edit_profile_modal_sub_title": "Personal Information",
+  "edit_profile_modal_save": "Save Changes",
+  "edit_profile_modal_cancel": "Cancel",
+  "edit_profile_modal_success": "Profile updated successfully.",
+  "edit_profile_modal_error": "An error occurred while updating the profile.",
+  "edit_profile_modal_loading": "Updating profile...",
+  "edit_profile_modal_change_password": "Change Password",
+  "edit_profile_modal_current_password": "Current Password",
+  "edit_profile_modal_new_password": "New Password",
+  "edit_profile_modal_confirm_password": "Confirm Password",
+  "edit_profile_modal_password_mismatch": "Passwords do not match.",
+  "edit_profile_modal_password_success": "Password changed successfully.",
+  "edit_profile_modal_password_error": "An error occurred while changing the password.",
+  "edit_profile_modal_password_loading": "Changing password..."
 }
