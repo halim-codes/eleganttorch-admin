@@ -7,6 +7,7 @@ import Button from "@/components/ui/button/Button";
 import DeleteCategoryModal from "./DeleteCategoryModal";
 import { useState, useEffect } from "react";
 import { Category } from "@/types/Category";
+import { PencilIcon, TrashBinIcon } from "@/icons";
 
 
 export const ProductCategoriesComponent = () => {
@@ -60,7 +61,7 @@ export const ProductCategoriesComponent = () => {
             setEditModalOpen(true);
           }}
         >
-          {messages["add_product_category"] || "Add Product Category"}
+          {messages["add"] || "Add"}
         </Button>
       </div>
 
@@ -68,7 +69,7 @@ export const ProductCategoriesComponent = () => {
         category={null}
         isOpen={!selectedCategory && editModalOpen}
         onClose={closeEditModal}
-        onSuccess={refreshData} 
+        onSuccess={refreshData}
       />
 
 
@@ -77,7 +78,7 @@ export const ProductCategoriesComponent = () => {
           category={selectedCategory}
           isOpen={editModalOpen}
           onClose={closeEditModal}
-          onSuccess={refreshData} 
+          onSuccess={refreshData}
         />
       )}
 
@@ -101,13 +102,13 @@ export const ProductCategoriesComponent = () => {
                     isHeader
                     className="px-6 py-3 text-start font-medium text-gray-500 text-theme-xs dark:text-gray-400"
                   >
-                    {messages["product_name"] || "Product Name"}
+                    {messages["name"] || "Name"}
                   </TableCell>
                   <TableCell
                     isHeader
                     className="px-6 py-3 text-start font-medium text-gray-500 text-theme-xs dark:text-gray-400"
                   >
-                    {messages["product_description"] || "Product Description"}
+                    {messages["description"] || "Description"}
                   </TableCell>
                   <TableCell
                     isHeader
@@ -131,23 +132,19 @@ export const ProductCategoriesComponent = () => {
                         </TableCell>
                         <TableCell className="px-6 py-4 text-gray-800 dark:text-white">
                           <div className="flex items-center gap-5">
-                            <Button
-                              size="sm"
-                              className="bg-orange-400 hover:bg-orange-500 text-white shadow-sm transition-all duration-200 rounded-md focus:ring-2 focus:ring-orange-300"
+                            <button
                               onClick={() => handleEdit(category)}
                             >
-                              {messages["edit"] || "Edit"}
-                            </Button>
+                              <PencilIcon />
+                            </button>
 
 
 
-                            <Button
-                              size="sm"
-                              className="bg-red-600 hover:bg-red-700 text-white"
+                            <button
                               onClick={() => handleDelete(category)}
                             >
-                              {messages["delete"] || "Delete"}
-                            </Button>
+                              <TrashBinIcon />
+                            </button>
                           </div>
                         </TableCell>
 

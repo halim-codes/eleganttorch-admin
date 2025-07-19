@@ -24,7 +24,6 @@
   "signin_success": "تم تسجيل الدخول بنجاح  ...",
   "signin_no_account": "لا تملك حسابًا؟",
   "signin_signup_link": "سجّل الآن",
-
   "edit_profile": "تعديل الملف الشخصي",
   "support": "الدعم الفني",
   "sign-out": "تسجيل الخروج",
@@ -37,17 +36,8 @@
   "nav_products": "المنتجات",
   "nav_product_subcategories": "الفئات الثانوية",
   "product_name": "اسم المنتج",
-  "product_name_label": "اسم المنتج",
   "product_description": "وصف المنتج",
-  "product_description_placeholder": "أدخل وصف المنتج",
-  "product_description_name_label": "وصف المنتج",
-  "product_name_placeholder": "اسم المنتج",
-  "add_product_title": "إضافة فئة منتج",
-  "add_product_category": "إضافة فئة منتج",
   "product_action": "العمليات",
-  "edit_product_category": "تعديل فئة المنتج",
-  "categories_created_successfully": "تم إنشاء الفئة بنجاح!",
-  "categories_updated_successfully": "تم تحديث الفئة بنجاح!",
   "confirm_delete": "تأكيد الحذف",
   "delete_warning": "هل أنت متأكد أنك تريد حذف \"{name}\"؟ هذا الإجراء لا يمكن التراجع عنه.",
   "deleting": "جاري الحذف...",
@@ -66,8 +56,7 @@
   "nav_original_users": "المستخدمين",
   "nav_users": "المستخدمين",
   "nav_add_users": "إضافة",
-  "register_sentence":"أنشئ عروضك بسرعة. وأغلق صفقاتك أسرع.",
-
+  "register_sentence": "أنشئ عروضك بسرعة. وأغلق صفقاتك أسرع.",
   "_comment_profile": "الملف التعريفي للمستخدم",
   "p_profile": "الملف التعريفي للمستخدم",
   "personal_info": "المعلومات الشخصية",
@@ -75,10 +64,19 @@
   "email": "البريد الإلكتروني",
   "phone": "رقم الهاتف",
   "role": "الدور",
-  
-  "u_add_user":"أضف مستخدم جديد",
+  "_comment_categories": "صفحة الفئات",
+  "edit_product_category": "تعديل فئة المنتج",
+  "add_product_title": "إضافة فئة منتج",
+  "product_name_label": "اسم الفئة :",
+  "product_name_placeholder": "اكتب اسم الفئة",
+  "categorie_description_label": "وصف الفئة :",
+  "product_description_placeholder": "أدخل وصف الفئة",
+  "submitting": "جاري الحفظ...",
+  "categories_updated_successfully": "تم تحديث الفئة بنجاح!",
+  "categories_created_successfully": "تم إنشاء الفئة بنجاح!",
+  "description": "الوصف",
+  "u_add_user": "أضف مستخدم جديد",
   "user_created_successfully": "تم إنشاء المستخدم بنجاح!",
-
   "edit_profile_modal_title": "تعديل الملف الشخصي",
   "edit_profile_modal_description": "قم بتحديث معلومات ملفك الشخصي.",
   "edit_profile_modal_sub_title": "المعلومات الشخصية ",
@@ -95,6 +93,4 @@
   "edit_profile_modal_password_success": "تم تغيير كلمة المرور بنجاح.",
   "edit_profile_modal_password_error": "حدث خطأ أثناء تغيير كلمة المرور.",
   "edit_profile_modal_password_loading": "جارٍ تغيير كلمة المرور..."
-
-  
 }

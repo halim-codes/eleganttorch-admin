@@ -12,9 +12,9 @@ interface Props {
   onSuccess: () => void;
 }
 
+
 const DeleteCategoryModal: React.FC<Props> = ({ category, isOpen, onClose, onSuccess }) => {
-  const { messages, locale } = useLocale();
-  const isRtl = locale === "ar";
+  const { messages} = useLocale();
   const { remove, removing } = useCategories();
   const [error, setError] = useState<string | null>(null);
 
@@ -33,7 +33,7 @@ const DeleteCategoryModal: React.FC<Props> = ({ category, isOpen, onClose, onSuc
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} className="max-w-md p-6">
-      <div className={`${isRtl ? "pr-16" : "pl-16"} pt-2`}>
+      <div className='pt-4 pb-4 text-center'>
         <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
           {messages["confirm_delete"] || "Confirm Deletion"}
         </h4>

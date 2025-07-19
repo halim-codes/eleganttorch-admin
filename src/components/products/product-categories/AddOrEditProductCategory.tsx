@@ -56,7 +56,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     setTimeout(() => {
       onClose();
       onSuccess(); 
-    }, 1000);
+    }, 500);
   }
 };
 
@@ -102,7 +102,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             </div>
             <div>
               <Label className="mb-1 block">
-                {messages["product_description_name_label"] || "Description"}
+                {messages["categorie_description_label"] || "Description"}
               </Label>
               <textarea
                 placeholder={messages["product_description_placeholder"] || "Enter product description"}
@@ -123,7 +123,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             disabled={adding || updating}
             size="sm"
             type="submit"
-            className={isEditMode ? "bg-orange-400 hover:bg-orange-500 text-white shadow-sm transition-all duration-200 rounded-md focus:ring-2 focus:ring-orange-300" : ""}
+            className={isEditMode ? "bg-primary-400 hover:bg-primary-500 text-white shadow-sm transition-all duration-200 rounded-md focus:ring-2 focus:ring-primary-300" : ""}
           >
             {(adding || updating)
               ? messages["submitting"] || "Submitting..."
