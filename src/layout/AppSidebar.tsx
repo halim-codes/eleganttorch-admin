@@ -30,6 +30,16 @@ const getNavItems = (messages: any): NavItem[] => [
     name: messages["nav_dashboard"] || "Dashboard",
     path: "/",
   },
+   {
+    icon: <BoxIcon />,
+    name: messages["nav_products"] || "Products",
+    subItems: [
+      { name: messages["nav_product_categories"] || "Product Categories", path: "/products/product-categories" },
+      { name: messages["nav_product_subcategories"] || "Product Subcategories", path: "/products/product-subcategories" },
+      { name: messages["nav_original_product"] || "Products", path: "/products/original-products" },
+      { name: messages["nav_add_product"] || "Add", path: "/products/add-product" },
+    ],
+  },
 ];
 
 const getOtherItems = (messages: any): NavItem[] => [
