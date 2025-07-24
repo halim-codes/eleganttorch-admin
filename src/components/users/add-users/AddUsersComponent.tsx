@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLocale } from "@/context/LocaleContext";
-import { useUsers } from "@/hooks/useUser";
+import { useUsers } from "@/hooks/useUsers";
 
 export const AddUsersComponent = () => {
   const { messages } = useLocale();
@@ -15,6 +15,7 @@ export const AddUsersComponent = () => {
     phone: "",
     email: "",
     password: "",
+    role:"",
   });
 
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -28,7 +29,7 @@ export const AddUsersComponent = () => {
 
     const result = await add(form);
     if (result) {
-      setForm({ name: "", phone: "", email: "", password: "" });
+      setForm({ name: "", phone: "", email: "", password: "" , role: "" });
       setSuccessMessage(messages["user_created_successfully"] || "User created successfully!");
 
       setTimeout(() => {
