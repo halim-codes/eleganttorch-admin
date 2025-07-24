@@ -43,13 +43,10 @@ const getNavItems = (messages: any): NavItem[] => [
 ];
 
 const getOtherItems = (messages: any): NavItem[] => [
-  {
-    icon: <UserIcon/>,
+   {
+    icon: <UserIcon />,
     name: messages["nav_users"] || "Users",
-    subItems: [
-      { name: messages["nav_original_users"] || "Users", path: "/users/original-users" },
-      { name: messages["nav_add_users"] || "Add", path: "/users/add-users" },
-    ],
+    path: "/users/original-users",
   },
   {
     icon: <UserCircleIcon />,

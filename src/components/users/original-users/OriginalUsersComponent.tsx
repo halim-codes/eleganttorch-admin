@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,16 +7,51 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import Link from "next/link";
 
 import { useLocale } from "@/context/LocaleContext";
-import { useUsers } from '@/hooks/useUser';
+import { useUsers } from '@/hooks/useUsers';
+import { PencilIcon, TrashBinIcon } from "@/icons";
+import { User } from "@/types/User";
+import AddOrEditUser from "./AddOrEditUser";
+import Button from "@/components/ui/button/Button";
+import DeleteUserModal from "./DeleteUserModal";
 
 export const OriginalUsersComponent = () => {
   const { messages } = useLocale();
-  const { users, loading, error } = useUsers();
+  const { users, loading, error, refetch } = useUsers();
 
-  if (loading) return <p>Loading users...</p>;
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<User | null>(null);
+  const [isRefetching, setIsRefetching] = useState(false);
+
+    const handleEdit = (user: User) => {
+      setSelectedCategory(user);
+      setEditModalOpen(true);
+    };
+    const handleDelete = (user: User) => {
+      setSelectedCategory(user);
+      setDeleteModalOpen(true);
+    };
+    const refreshData = async () => {
+      setIsRefetching(true);
+      await refetch();
+      setIsRefetching(false);
+    };
+  
+    const closeEditModal = () => {
+      setSelectedCategory(null);
+      setEditModalOpen(false);
+    };
+    const closeDeleteModal = async () => {
+      setSelectedCategory(null);
+      setDeleteModalOpen(false);
+      await refreshData();
+  
+    };
+  
+
+  if (loading || isRefetching) return <p>Loading users...</p>;
   if (error) return <p>{error}</p>;
 
   return (
@@ -25,12 +60,46 @@ export const OriginalUsersComponent = () => {
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
           {messages["nav_original_users"] || "Users"}
         </h3>
-        <Link
-          href="/users/add-users"
-          className="rounded-md bg-blue-900 px-4 py-2 text-white font-semibold hover:bg-blue-950 dark:bg-blue-500 dark:hover:bg-blue-600 whitespace-nowrap"
+        {/* Add New Category Button */}
+      <div className="flex justify-end mb-4">
+        <Button
+          size="sm"
+          onClick={() => {
+            setSelectedCategory(null); // add mode
+            setEditModalOpen(true);
+          }}
         >
-          {messages["u_add_user"] || "Add New User"}
-        </Link>
+          {messages["add"] || "Add"}
+        </Button>
+      </div>
+
+      <AddOrEditUser
+        user={null}
+        isOpen={!selectedCategory && editModalOpen}
+        onClose={closeEditModal}
+        onSuccess={refreshData}
+      />
+
+
+      {selectedCategory && (
+        <AddOrEditUser
+          user={selectedCategory}
+          isOpen={editModalOpen}
+          onClose={closeEditModal}
+          onSuccess={refreshData}
+        />
+      )}
+
+
+      {selectedCategory && (
+        <DeleteUserModal
+          user={selectedCategory}
+          isOpen={deleteModalOpen}
+          onClose={closeDeleteModal}
+          onSuccess={refreshData}
+        />
+      )}
+
       </div>
       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-white/[0.05] dark:bg-white/[0.03]">
         <div className="max-w-full overflow-x-auto">
@@ -63,6 +132,12 @@ export const OriginalUsersComponent = () => {
                   >
                     {messages["phone"] || "Phone"}
                   </TableCell>
+                  <TableCell
+                    isHeader
+                    className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                  >
+                    {messages["product_action"] || "Action"}
+                  </TableCell>
                 </TableRow>
               </TableHeader>
 
@@ -87,6 +162,23 @@ export const OriginalUsersComponent = () => {
                         </TableCell>
                         <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                           {user.phone}
+                        </TableCell>
+                        <TableCell className="px-6 py-4 text-gray-800 dark:text-white">
+                          <div className="flex items-center gap-5">
+                            <button
+                            onClick={() => handleEdit(user)}
+                            >
+                              <PencilIcon />
+                            </button>
+
+
+
+                            <button
+                            onClick={() => handleDelete(user)}
+                            >
+                              <TrashBinIcon />
+                            </button>
+                          </div>
                         </TableCell>
                       </TableRow>
                     )
