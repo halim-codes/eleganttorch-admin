@@ -109,7 +109,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 value={form.description}
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 rows={6}
-                className="w-full rounded-lg border px-4 py-2.5 text-sm shadow-theme-xs focus:outline-hidden"
+                className="w-full mt-1 px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white bg-white text-gray-800 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10"
               />
             </div>
           </div>
