@@ -9,11 +9,13 @@ import {
   GridIcon,
   HorizontaLDots,
   UserCircleIcon,
-  GroupIcon,
   BoxIcon,
-  LockIcon,
   UserIcon,
-  ListIcon
+  DocsIcon,
+  PageIcon,
+  ShootingStarIcon,
+  TaskIcon,
+  PieChartIcon,
 } from "../icons/index";
 import { useLocale } from '@/context/LocaleContext';
 
@@ -38,6 +40,17 @@ const getNavItems = (messages: any): NavItem[] => [
       { name: messages["nav_original_product"] || "Products", path: "/products/original-products" },
     ],
   },
+    {
+    icon: <TaskIcon />,
+    name: messages["nav_services"] || "Services",
+    path: "/services",
+  },
+  {
+    icon: <PieChartIcon />,
+    name: messages["nav_projects"] || "Projects",
+    path: "/projects",
+  },
+  
 ];
 
 const getOtherItems = (messages: any): NavItem[] => [
@@ -50,6 +63,19 @@ const getOtherItems = (messages: any): NavItem[] => [
     icon: <UserCircleIcon />,
     name: messages["nav_profile"] || "User Profile",
     path: "/profile",
+  },
+   {
+    icon: <PageIcon />,
+    name: messages["nav_blog"] || "Blog",
+    path: "/blog",
+  },
+   {
+    icon: <GridIcon />,
+    name: messages["nav_setting"] || "Settings",
+    subItems: [
+      { name: messages["nav_about_us"] || "About Us ", path: "/setting/about-us" },
+      { name: messages["nav_call_us"] || "Call Us", path: "/setting/call-us" },
+    ],
   },
 ];
 
