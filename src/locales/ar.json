@@ -47,7 +47,7 @@
   "category_name": "اسم الفئة :",
   "product_image": "صورة المنتج :",
   "product_description": "وصف المنتج :",
-  "product_action": "العمليات",
+  "action": "العمليات",
   "confirm_delete": "تأكيد الحذف",
   "delete_warning": "هل أنت متأكد أنك تريد حذف \"{name}\"؟ هذا الإجراء لا يمكن التراجع عنه.",
   "deleting": "جاري الحذف...",
@@ -114,5 +114,15 @@
   "edit_profile_modal_password_mismatch": "كلمات المرور غير متطابقة.",
   "edit_profile_modal_password_success": "تم تغيير كلمة المرور بنجاح.",
   "edit_profile_modal_password_error": "حدث خطأ أثناء تغيير كلمة المرور.",
-  "edit_profile_modal_password_loading": "جارٍ تغيير كلمة المرور..."
+  "edit_profile_modal_password_loading": "جارٍ تغيير كلمة المرور...",
+  "_comment_blog":"صفحة المدونة",
+  "blog_updated_successfully": "تم تحديث المدونة بنجاح!",
+  "blog_created_successfully":"تم إنشاء المدونة بنجاح!",
+  "edit_blog":"تعديل المدونة",
+  "add_blog_title":"اضافة مدونة",
+  "blog_name_label":"عنوان :",
+  "blog_name_placeholder":"أدخل عنوان المدونة",
+  "blog_description_label":"وصف المدونة :",
+  "blog_description_placeholder":"أدخل وصف المدونة",
+  "title": "العنوان"
 }
