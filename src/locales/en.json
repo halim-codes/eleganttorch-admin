@@ -47,7 +47,7 @@
   "category_name": "Category Name :",
   "product_image": "Product Image :",
   "product_description": "Product Description :",
-  "product_action": "Action",
+  "action": "Action",
   "confirm_delete": "Confirm Deletion",
   "delete_warning": "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
   "deleting": "Deleting...",
@@ -114,5 +114,15 @@
   "edit_profile_modal_password_mismatch": "Passwords do not match.",
   "edit_profile_modal_password_success": "Password changed successfully.",
   "edit_profile_modal_password_error": "An error occurred while changing the password.",
-  "edit_profile_modal_password_loading": "Changing password..."
+  "edit_profile_modal_password_loading": "Changing password...",
+  "_comment_blog":" Blog page",
+  "blog_updated_successfully": "Blog updated successfully.",
+  "blog_created_successfully": "Blog created successfully.",
+  "edit_blog": "Edit Blog",
+  "add_blog_title": "Add Blog",
+  "blog_name_label": "Title:",
+  "blog_name_placeholder":"Enter blog title",
+  "blog_description_label": "Description:",
+  "blog_description_placeholder": "Enter blog description",
+  "title": "Title"
 }

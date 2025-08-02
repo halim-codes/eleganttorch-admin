@@ -1,0 +1,47 @@
+/* ارتفاع ثابت ومناسب لمحرر النصوص */
+.ck-editor__editable_inline {
+  min-height: 200px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* إزالة أي فراغ غير ضروري داخل المحرر */
+.ck-editor__editable {
+  padding: 12px;
+  margin: 0;
+  overflow-y: auto;
+}
+
+/* الوضع الداكن الكامل */
+.dark .ck.ck-editor__main {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+.dark .ck.ck-toolbar {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+.dark .ck.ck-content {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+/* إصلاح الفراغ السفلي */
+.ck.ck-content > p:last-child,
+.ck-editor__editable_inline::after {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  display: none !important;
+}
+.ck.ck-content h1,
+.ck.ck-content h2,
+.ck.ck-content h3 {
+  color: inherit !important;
+  font-weight: bold;
+}
+
+.ck.ck-content p {
+  font-weight: normal;
+}
