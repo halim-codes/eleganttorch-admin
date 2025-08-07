@@ -150,6 +150,9 @@ export const BlogComponent = () => {
                         </TableCell>
                         <TableCell className="px-6 py-4 text-gray-800 dark:text-white">
                           <div className="flex items-center gap-5">
+                            <button onClick={() => handleShow(post)}>
+                              <EyeIcon />
+                            </button>
                             <button
                               onClick={() => handleEdit(post)}
                             >
@@ -161,15 +164,8 @@ export const BlogComponent = () => {
                             >
                               <TrashBinIcon />
                             </button>
-                            <button onClick={() => handleShow(post)}>
-                              <EyeIcon />
-                            </button>
-
-
-
                           </div>
                         </TableCell>
-
                       </TableRow>
                     )
                   ))}
