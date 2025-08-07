@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Button from "@/components/ui/button/Button";
 import { useLocale } from "@/context/LocaleContext";
-import { useModal } from '@/hooks/useModal';
 import Label from "@/components/form/Label";
 import { Modal } from "@/components/ui/modal";
-import { useCategories } from '@/hooks/useCategories';
 import { useRouter } from 'next/navigation';
 import { Blog } from '@/types/Blog';
 import { useBlog } from '@/hooks/useBlog';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import "../../style/blogStyle.css";
+import AdvancedEditor from './AdvancedEditor';
 
 
 interface Props {
@@ -68,7 +65,7 @@ const AddOrEditBlog: React.FC<Props> = ({ blog = null, isOpen, onClose, onSucces
 
 
  return (
-    <Modal isOpen={isOpen} onClose={onClose} className="max-w-[584px] p-8 lg:p-12">
+    <Modal isOpen={isOpen} onClose={onClose}  className="max-w-[584px] p-8 lg:p-12 mt-16 mp-16">
       <form onSubmit={handleSubmit}>
         <h4 className="mb-6 text-lg font-medium text-center text-gray-800 dark:text-white/90">
           {isEditMode ? messages["edit_blog"] || "Edit Blog" : messages["add_blog_title"] || "Add Blog"}
@@ -97,23 +94,10 @@ const AddOrEditBlog: React.FC<Props> = ({ blog = null, isOpen, onClose, onSucces
               dir={isRtl ? "rtl" : "ltr"}
               className={`ck-editor__wrapper w-full border rounded-md bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 ${isRtl ? "text-right" : "text-left"}`}
             >
-              <CKEditor
-                editor={ClassicEditor as any}
-                data={form.description}
-                onChange={(_, editor) => {
-                  const data = editor.getData();
-                  setForm({ ...form, description: data });
-                }}
-                config={{
-                  language: isRtl ? 'ar' : 'en',
-                  toolbar: [
-                    'heading', '|',
-                    'bold', 'italic', 'underline', 'link', '|',
-                    'bulletedList', 'numberedList', '|',
-                    'blockQuote', 'insertTable', '|',
-                    'undo', 'redo'
-                  ],
-                }}
+              <AdvancedEditor
+                value={form.description}
+                onChange={(val) => setForm({ ...form, description: val })}
+                locale={locale}
               />
             </div>
           </div>
