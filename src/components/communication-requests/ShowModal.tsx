@@ -52,7 +52,7 @@ export default function ShowModal({ isOpen, onClose, communication }: Props) {
               </svg>
             }
             label={messages["communication_request_date"] || "Date"}
-            value={communication?.createdAt}
+            value={communication?.createdAt? new Date(communication.createdAt).toLocaleDateString() : "N/A"}
           />
           <InfoItem
             icon={

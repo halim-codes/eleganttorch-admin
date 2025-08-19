@@ -122,9 +122,14 @@ export const CommunicationRequestsComponent = () => {
                                             <TableCell className="px-20 py-4 text-gray-800 dark:text-white align-middle">
                                                 {request.phone}
                                             </TableCell>
-                                            <TableCell className="px-20 py-4 text-gray-800 dark:text-white align-middle">
-                                                {request.message}
+                                            <TableCell
+                                                className="px-6 py-3 text-gray-800 dark:text-white align-middle max-w-[200px] truncate whitespace-nowrap"
+                                            >
+                                                {(request.message ?? "").length > 50
+                                                    ? request.message!.substring(0, 50) + "..."
+                                                    : request.message ?? ""}
                                             </TableCell>
+
                                             <TableCell className="px-20 py-4 text-gray-800 dark:text-white align-middle">
                                                 <button onClick={() => handleShow(request)} >
                                                     <EyeIcon />
