@@ -146,7 +146,9 @@ export const BlogComponent = () => {
                           {post.title}
                         </TableCell>
                         <TableCell className="px-6 py-4 text-gray-800 dark:text-white">
-                          {post.description}
+                          {(post.description ?? "").length > 50
+                            ? post.description!.substring(0, 50) + "..."
+                            : post.description ?? ""}
                         </TableCell>
                         <TableCell className="px-6 py-4 text-gray-800 dark:text-white">
                           <div className="flex items-center gap-5">
