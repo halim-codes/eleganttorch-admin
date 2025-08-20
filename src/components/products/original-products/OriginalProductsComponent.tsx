@@ -16,42 +16,42 @@ export const OriginalProductsComponent = () => {
       _id: "1",
       product_name: "iPhone 14 Pro",
       category_name: "Electronics",
-      product_image: "https://picsum.photos/200",
+      // product_image: "https://picsum.photos/200",
       product_description: "A powerful smartphone with a stunning display and camera.",
     },
     {
       _id: "2",
       product_name: "Nike Air Max",
       category_name: "Shoes",
-      product_image: "https://picsum.photos/200",
+      // product_image: "https://picsum.photos/200",
       product_description: "Comfortable and stylish running shoes for everyday use.",
     },
     {
       _id: "3",
       product_name: "Rolex Watch",
       category_name: "Accessories",
-      product_image: "https://picsum.photos/200",
+      // product_image: "https://picsum.photos/200",
       product_description: "Luxury wristwatch with timeless design and precision.",
     },
     {
       _id: "4",
       product_name: "Gaming Laptop",
       category_name: "Computers",
-      product_image: "https://picsum.photos/200",
+      // product_image: "https://picsum.photos/200",
       product_description: "High-performance laptop built for modern gaming.",
     },
     {
       _id: "5",
       product_name: "Canon Camera",
       category_name: "Cameras",
-      product_image: "https://picsum.photos/200",
+      // product_image: "https://picsum.photos/200",
       product_description: "Professional DSLR camera for photography enthusiasts.",
     },
     {
       _id: "6",
       product_name: "Zara Jacket",
       category_name: "Clothing",
-      product_image: "https://picsum.photos/200",
+      // product_image: "https://picsum.photos/200",
       product_description: "Trendy and warm jacket for winter fashion.",
     },
   ];
@@ -144,7 +144,7 @@ export const OriginalProductsComponent = () => {
           >
             <div className="relative">
               <img
-                src={product.product_image || "/placeholder.png"}
+                src="/placeholder.png"
                 alt={product.product_name}
                 className="h-48 w-full object-cover"
               />

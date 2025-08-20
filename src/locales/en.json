@@ -113,6 +113,7 @@
   "email_placeholder": "Enter email address",
   "updated_successfully": "Updated successfully",
   "_comment_categories": "Categories page",
+  "select_category": "Select Category",
   "edit_product_category": "Edit Product Category",
   "add_product_title": "Add Product Category",
   "product_name_label": "Category Name:",
