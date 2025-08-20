@@ -7,7 +7,8 @@ import { Modal } from "@/components/ui/modal";
 import { useRouter } from 'next/navigation';
 import { Product } from '@/types/Product';
 import { useProducts } from '@/hooks/useProducts';
-import FileInput from '@/components/form/input/FileInput';
+import { Category } from '@/types/Category';
+import { fetchCategories } from '../../../services/CategoriesService';
 
 interface Props {
   product?: Product | null;
@@ -22,6 +23,7 @@ const AddOrEditProduct: React.FC<Props> = ({ product = null, isOpen, onClose, on
   const router = useRouter();
   // const { openModal, closeModal} = useModal();
   const { add, update, adding, updating, error } = useProducts();
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const isEditMode = !!product;
 
@@ -50,6 +52,19 @@ const AddOrEditProduct: React.FC<Props> = ({ product = null, isOpen, onClose, on
     }
   }, [product, isEditMode]);
 
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const res = await fetchCategories();
+        setCategories(res.data); // حسب ApiResponse<Category[]>
+      } catch (err) {
+        console.error("Error loading categories", err);
+      }
+    };
+    loadCategories();
+  }, []);
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,6 +85,11 @@ const AddOrEditProduct: React.FC<Props> = ({ product = null, isOpen, onClose, on
       }, 500);
     }
   };
+  const categoryOptions = categories.map(cat => ({
+    value: cat._id,
+    label: cat.name
+  }));
+
   const isRtl = locale === "ar";
 
 
@@ -100,6 +120,28 @@ const AddOrEditProduct: React.FC<Props> = ({ product = null, isOpen, onClose, on
           <div className="space-y-4">
             <div>
               <Label className="mb-1 block">
+                {messages["category_name"] || "Category Name"}
+              </Label>
+              <select
+                name="category_name"
+                value={form.category_name}
+                onChange={(e) => setForm({ ...form, category_name: e.target.value })}
+                required
+                className={`w-full mt-1 px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white ${isRtl ? "text-right" : "text-left"}`}
+              >
+                <option value="" disabled>
+                  {messages["select_category"] || "Select Category"}
+                </option>
+                {categoryOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+    
+            </div>
+            <div>
+              <Label className="mb-1 block">
                 {messages["product_name"] || "Product Name"}
               </Label>
               <input
@@ -112,21 +154,8 @@ const AddOrEditProduct: React.FC<Props> = ({ product = null, isOpen, onClose, on
                 className="w-full mt-1 px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
               />
             </div>
-            <div>
-              <Label className="mb-1 block">
-                {messages["category_name"] || "Category Name"}
-              </Label>
-              <input
-                type="text"
-                name="category_name"
-                placeholder={messages["category_name_placeholder"] || "Enter category name"}
-                value={form.category_name}
-                onChange={(e) => setForm({ ...form, category_name: e.target.value })}
-                required
-                className="w-full mt-1 px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-              />
-            </div>
-            <div>
+
+            {/* <div>
               <Label>{messages["product_image"] || "Product Image"}</Label>
               <FileInput
                 onChange={(e) => setForm({ ...form, product_image: e.target.value })}
@@ -134,7 +163,7 @@ const AddOrEditProduct: React.FC<Props> = ({ product = null, isOpen, onClose, on
                   ? "file:ml-4 file:mr-auto text-right"
                   : "file:mr-4 file:ml-auto text-left"
                 } />
-            </div>
+            </div> */}
             <div>
               <Label className="mb-1 block">
                 {messages["product_description"] || "Product Description"}

@@ -113,6 +113,7 @@
   "email_placeholder": "أدخل البريد الإلكتروني",
   "updated_successfully": "تم التحديث بنجاح",
   "_comment_categories": "صفحة الفئات",
+  "select_category":"اختر الفئة:",
   "edit_product_category": "تعديل فئة المنتج",
   "add_product_title": "إضافة فئة منتج",
   "product_name_label": "اسم الفئة :",
