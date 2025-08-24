@@ -1,5 +1,4 @@
 import api from '../lib/axios';
-import { Category } from '../types/Category';
 import { ApiResponse } from "../types/ApiResponse";
 import { Product } from '@/types/Product';
 

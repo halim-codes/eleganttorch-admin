@@ -1,7 +1,6 @@
 import axiosInstance from "@/lib/axios";
 import { LoginCredentials, LoginResponse } from "@/types/Auth";
 import { User } from "@/types/User";
-import { Categories } from "@/types/Category";
 
 
 export const authService = {

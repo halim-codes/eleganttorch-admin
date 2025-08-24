@@ -4,66 +4,22 @@ import AddOrEditProduct from "./AddOrEditProduct";
 import Button from "@/components/ui/button/Button";
 import { useState } from "react";
 import { Product } from "@/types/Product";
-import { useProducts } from "@/hooks/useProducts";
 import DeleteProductModal from "./DeleteProductModal";
 import { MoreDotIcon } from "@/icons";
 import { Dropdown } from "@/components/ui/dropdown/Dropdown";
 import { DropdownItem } from "@/components/ui/dropdown/DropdownItem";
+import { useProducts } from '@/hooks/useProducts';
 
 export const OriginalProductsComponent = () => {
-  const mockProducts: Product[] = [
-    {
-      _id: "1",
-      product_name: "iPhone 14 Pro",
-      category_name: "Electronics",
-      // product_image: "https://picsum.photos/200",
-      product_description: "A powerful smartphone with a stunning display and camera.",
-    },
-    {
-      _id: "2",
-      product_name: "Nike Air Max",
-      category_name: "Shoes",
-      // product_image: "https://picsum.photos/200",
-      product_description: "Comfortable and stylish running shoes for everyday use.",
-    },
-    {
-      _id: "3",
-      product_name: "Rolex Watch",
-      category_name: "Accessories",
-      // product_image: "https://picsum.photos/200",
-      product_description: "Luxury wristwatch with timeless design and precision.",
-    },
-    {
-      _id: "4",
-      product_name: "Gaming Laptop",
-      category_name: "Computers",
-      // product_image: "https://picsum.photos/200",
-      product_description: "High-performance laptop built for modern gaming.",
-    },
-    {
-      _id: "5",
-      product_name: "Canon Camera",
-      category_name: "Cameras",
-      // product_image: "https://picsum.photos/200",
-      product_description: "Professional DSLR camera for photography enthusiasts.",
-    },
-    {
-      _id: "6",
-      product_name: "Zara Jacket",
-      category_name: "Clothing",
-      // product_image: "https://picsum.photos/200",
-      product_description: "Trendy and warm jacket for winter fashion.",
-    },
-  ];
 
   const { messages } = useLocale();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
-  // const { products, loading, error, refetch } = useProducts();
-  const [isRefetching, setIsRefetching] = useState(false);
-
+  const { products, loading, error, refetch } = useProducts();
+  console.log("Products:", products);
+  
   const handleEdit = (product: Product) => {
     setSelectedProduct(product);
     setEditModalOpen(true);
@@ -137,15 +93,15 @@ export const OriginalProductsComponent = () => {
       )}
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {mockProducts.map((product) => (
+        {products.map((product) => (
           <div
             key={product._id}
             className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden"
           >
             <div className="relative">
               <img
-                src="/placeholder.png"
-                alt={product.product_name}
+                src={product.image}
+                alt="no image"
                 className="h-48 w-full object-cover"
               />
               <div className="absolute top-2 right-2">
@@ -195,7 +151,7 @@ export const OriginalProductsComponent = () => {
                 {product.product_name}
               </h4>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                {product.category_name}
+                {product?.category?.name ?? "No category"}
               </p>
               <p className="text-sm text-gray-400 dark:text-gray-500 mt-2 line-clamp-2">
                 {product.product_description || "No description available."}
